@@ -1,12 +1,13 @@
-import { cp } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { cp } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const src = new URL('../src/schema', import.meta.url);
-const dest = new URL('../dist/schema', import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, "..");
 
-if (existsSync(new URL('../src/schema', import.meta.url))) {
-  await cp(src, dest, { recursive: true });
-  console.log('✓ Copied GraphQL SDL from src/schema -> dist/schema');
-} else {
-  console.warn('⚠ src/schema missing; nothing to copy');
-}
+const from = path.join(root, "schema");
+const to = path.join(root, "dist", "schema");
+
+await cp(from, to, { recursive: true });
+console.log("✔ Copied schema .graphql → dist/schema");

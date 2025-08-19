@@ -1,7 +1,7 @@
 {
   "name": "@dcoutinho96/spotify-clone-luizalabs-coding-challenge-graphql-schema",
-  "version": "0.1.8",
-  "type": "module",
+  "version": "0.1.7",
+ "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -9,11 +9,14 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
-    }
+    },
+    "./operations/*": "./operations/*",
+    "./schema/*": "./schema/*"
   },
   "files": [
-    "dist",
-    "src/**/*.graphql"
+    "dist",         
+    "operations",    
+    "schema"        
   ],
   "scripts": {
     "build": "tsc && node scripts/copy-graphql.mjs",
@@ -23,9 +26,11 @@
   "dependencies": {
     "@graphql-tools/load-files": "^7.0.1",
     "@graphql-tools/merge": "^9.1.1",
-    "@types/node": "^24.3.0",
     "graphql": "^16.11.0",
-    "graphql-tag": "^2.12.6",
+    "graphql-tag": "^2.12.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
