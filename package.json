@@ -11,17 +11,7 @@
       "default": "./dist/index.js"
     }
   },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist",
-    "src/**/*.graphql"
-  ],
+  "files": ["dist", "src/**/*.graphql"],
   "scripts": {
     "build": "tsc && node scripts/copy-graphql.mjs",
     "prepublishOnly": "npm run build",
