@@ -6,13 +6,15 @@ type Query {
 
 type UserQuery {
   me: User!
-  myTopArtists(limit: Int, offset: Int): [Artist!]!
+  myTopArtists(limit: Int, offset: Int): ArtistConnection!
 }
 
 type ArtistQuery {
-  albums(artistId: ID!, limit: Int, offset: Int): [Album!]!
+  byId(id: ID!): Artist
+  albums(artistId: ID!, limit: Int, offset: Int): AlbumConnection!
 }
 
 type PlaylistQuery {
-  myPlaylists(limit: Int, offset: Int): [Playlist!]!
+  myPlaylists(limit: Int, offset: Int): PlaylistConnection!
+  byId(id: ID!): Playlist
 }
