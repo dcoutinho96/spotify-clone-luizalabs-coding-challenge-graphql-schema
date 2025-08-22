@@ -99,12 +99,18 @@ type TrackEdge {
   node: Track!
 }
 
-type Mutation {
-  playlist: PlaylistMutation!
+# --------------------------
+# Root Operations (flattened)
+# --------------------------
+type Query {
+  me: User!
+  myTopArtists(limit: Int, offset: Int): ArtistConnection!
+  artistById(id: ID!): Artist
+  artistAlbums(artistId: ID!, limit: Int, offset: Int): AlbumConnection!
+  myPlaylists(limit: Int, offset: Int): PlaylistConnection!
+  playlistById(id: ID!): Playlist
 }
 
-type Query {
-  user: UserQuery!
-  artist: ArtistQuery!
-  playlist: PlaylistQuery!
+type Mutation {
+  createPlaylist(name: String!, description: String, public: Boolean): Playlist!
 }
