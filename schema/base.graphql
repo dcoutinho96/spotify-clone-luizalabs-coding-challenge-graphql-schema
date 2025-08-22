@@ -1,7 +1,100 @@
-type Mutation {
-  playlist: PlaylistMutation!
+type User {
+  id: ID!
+  displayName: String!
+  email: String
+  country: String
+  followers: Int
+  images: [Image!]!
 }
 
-type PlaylistMutation {
-  create(name: String!, description: String, public: Boolean): Playlist!
+type Artist {
+  id: ID!
+  name: String!
+  genres: [String!]!
+  popularity: Int
+  images: [Image!]!
+  albums(limit: Int, offset: Int): AlbumConnection!
+}
+
+type Album {
+  id: ID!
+  name: String!
+  releaseDate: String
+  totalTracks: Int
+  images: [Image!]!
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  description: String
+  public: Boolean
+  images: [Image!]!
+  owner: User!
+  tracks(limit: Int, offset: Int): TrackConnection!
+}
+
+type Track {
+  id: ID!
+  name: String!
+  durationMs: Int!
+  previewUrl: String
+  artists: [Artist!]!
+  album: Album!
+}
+
+type Image {
+  url: String!
+  height: Int
+  width: Int
+}
+
+# --------------------------
+# Pagination Structures
+# --------------------------
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type ArtistConnection {
+  edges: [ArtistEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type ArtistEdge {
+  cursor: String!
+  node: Artist!
+}
+
+type AlbumConnection {
+  edges: [AlbumEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type AlbumEdge {
+  cursor: String!
+  node: Album!
+}
+
+type PlaylistConnection {
+  edges: [PlaylistEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type PlaylistEdge {
+  cursor: String!
+  node: Playlist!
+}
+
+type TrackConnection {
+  edges: [TrackEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int
+}
+type TrackEdge {
+  cursor: String!
+  node: Track!
 }
