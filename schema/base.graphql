@@ -98,3 +98,13 @@ type TrackEdge {
   cursor: String!
   node: Track!
 }
+
+type Mutation {
+  playlist: PlaylistMutation!
+}
+
+type Query {
+  user: UserQuery!
+  artist: ArtistQuery!
+  playlist: PlaylistQuery!
+}
