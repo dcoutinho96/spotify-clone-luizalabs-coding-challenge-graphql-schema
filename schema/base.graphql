@@ -1,3 +1,50 @@
-type Query {
-  hello: String!
+type User {
+  id: ID!
+  displayName: String!
+  email: String
+  country: String
+  followers: Int
+  images: [Image!]
+}
+
+type Artist {
+  id: ID!
+  name: String!
+  genres: [String!]
+  popularity: Int
+  images: [Image!]
+  albums(limit: Int, offset: Int): [Album!]!
+}
+
+type Album {
+  id: ID!
+  name: String!
+  releaseDate: String
+  totalTracks: Int
+  images: [Image!]
+}
+
+type Playlist {
+  id: ID!
+  name: String!
+  description: String
+  public: Boolean
+  images: [Image!]
+  owner: User!
+  tracks(limit: Int, offset: Int): [Track!]!
+}
+
+type Track {
+  id: ID!
+  name: String!
+  durationMs: Int!
+  previewUrl: String
+  artists: [Artist!]!
+  album: Album!
+}
+
+type Image {
+  url: String!
+  height: Int
+  width: Int
 }

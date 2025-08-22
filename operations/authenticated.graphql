@@ -1,0 +1,18 @@
+type Query {
+  user: UserQuery!
+  artist: ArtistQuery!
+  playlist: PlaylistQuery!
+}
+
+type UserQuery {
+  me: User!
+  myTopArtists(limit: Int, offset: Int): [Artist!]!
+}
+
+type ArtistQuery {
+  albums(artistId: ID!, limit: Int, offset: Int): [Album!]!
+}
+
+type PlaylistQuery {
+  myPlaylists(limit: Int, offset: Int): [Playlist!]!
+}
