@@ -1,0 +1,39 @@
+# Create a new playlist
+mutation CreatePlaylist($name: String!, $description: String, $public: Boolean) {
+  createPlaylist(name: $name, description: $description, public: $public) {
+    id
+    name
+    description
+    public
+    images {
+      url
+      height
+      width
+    }
+    owner {
+      id
+      displayName
+      images {
+        url
+        height
+        width
+      }
+    }
+    tracks(limit: 10, offset: 0) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          durationMs
+          previewUrl
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}

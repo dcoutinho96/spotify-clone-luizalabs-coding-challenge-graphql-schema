@@ -10,18 +10,24 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./operations/*": "./operations/*",
-    "./schema/*": "./schema/*",
-    "./mutations/*": "./mutations/*"
+    "./schema/*": {
+      "import": "./schema/*.graphql"
+    },
+    "./mutations/*": {
+      "import": "./mutations/*.graphql"
+    },
+    "./operations/*": {
+      "import": "./operations/*.graphql"
+    }
   },
   "files": [
     "dist",
-    "operations",
     "schema",
-    "mutations"
+    "mutations",
+    "operations"
   ],
   "scripts": {
-    "build": "tsc && node scripts/copy-graphql.mjs",
+    "build": "tsup src/index.ts --format esm --dts --out-dir dist --clean && node scripts/copy-graphql.mjs",
     "prepublishOnly": "npm run build",
     "test": "echo \"(no tests yet)\" && exit 0"
   },
@@ -34,6 +40,7 @@
   "devDependencies": {
     "@types/node": "^24.3.0",
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.0",
     "typescript": "^5.9.2"
   },
   "publishConfig": {
