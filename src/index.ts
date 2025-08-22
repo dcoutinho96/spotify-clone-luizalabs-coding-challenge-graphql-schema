@@ -6,7 +6,7 @@ import { mergeTypeDefs } from "@graphql-tools/merge";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const schemaGlob = path.join(__dirname, "**/*.graphql");
+const schemaGlob = path.join(__dirname, "schema", "**/*.graphql");
 
 const typesArray = loadFilesSync(schemaGlob, {
   ignoreIndex: true,

@@ -1,4 +1,0 @@
-
-type PlaylistMutation {
-  create(name: String!, description: String, public: Boolean): Playlist!
-}

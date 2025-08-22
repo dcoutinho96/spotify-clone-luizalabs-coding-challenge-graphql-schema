@@ -15,6 +15,4 @@ async function copyDir(name) {
 
 await Promise.all([
   copyDir("schema"),
-  copyDir("operations"),
-  copyDir("mutations"),
 ]);
