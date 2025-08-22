@@ -100,7 +100,7 @@ type TrackEdge {
 # Root Operations (flattened)
 # --------------------------
 type Query {
-  me: User!
+  me: User
   myTopArtists(limit: Int, offset: Int): ArtistConnection!
   artistById(id: ID!): Artist
   artistAlbums(artistId: ID!, limit: Int, offset: Int): AlbumConnection!
