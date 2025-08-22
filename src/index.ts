@@ -6,8 +6,11 @@ import { mergeTypeDefs } from "@graphql-tools/merge";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// At runtime, this resolves to <pkg>/dist/schema
-const schemaGlob = path.join(__dirname, "schema", "**/*.graphql");
+const schemaGlob = path.join(__dirname, "**/*.graphql");
 
-const typesArray = loadFilesSync(schemaGlob, { ignoreIndex: true, recursive: true });
+const typesArray = loadFilesSync(schemaGlob, {
+  ignoreIndex: true,
+  recursive: true,
+});
+
 export const typeDefs = mergeTypeDefs(typesArray);
