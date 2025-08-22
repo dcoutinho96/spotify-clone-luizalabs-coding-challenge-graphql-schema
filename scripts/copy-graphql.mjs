@@ -6,8 +6,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, "..");
 
-const from = path.join(root, "schema");
-const to = path.join(root, "dist", "schema");
+async function copyDir(name) {
+  const from = path.join(root, name);
+  const to = path.join(root, "dist", name);
+  await cp(from, to, { recursive: true });
+  console.log(`✔ Copied ${name} → dist/${name}`);
+}
 
-await cp(from, to, { recursive: true });
-console.log("✔ Copied schema .graphql → dist/schema");
+await Promise.all([
+  copyDir("schema"),
+  copyDir("operations"),
+  copyDir("mutations"),
+]);
