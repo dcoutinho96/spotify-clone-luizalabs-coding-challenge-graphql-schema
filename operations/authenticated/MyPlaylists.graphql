@@ -1,0 +1,27 @@
+query MyPlaylists($limit: Int, $offset: Int) {
+  myPlaylists(limit: $limit, offset: $offset) {
+    edges {
+      cursor
+      node {
+        id
+        name
+        description
+        public
+        images {
+          url
+          height
+          width
+        }
+        owner {
+          id
+          displayName
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    totalCount
+  }
+}

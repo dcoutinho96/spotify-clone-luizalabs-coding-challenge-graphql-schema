@@ -1,0 +1,34 @@
+query ArtistById($id: ID!) {
+  artistById(id: $id) {
+    id
+    name
+    genres
+    popularity
+    images {
+      url
+      height
+      width
+    }
+    albums(limit: 10, offset: 0) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          releaseDate
+          totalTracks
+          images {
+            url
+            height
+            width
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}

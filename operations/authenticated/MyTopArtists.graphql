@@ -1,0 +1,25 @@
+query MyTopArtists($limit: Int, $offset: Int) {
+  myTopArtists(limit: $limit, offset: $offset) {
+    edges {
+      cursor
+      node {
+        id
+        name
+        genres
+        popularity
+        images {
+          url
+          height
+          width
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    totalCount
+  }
+}

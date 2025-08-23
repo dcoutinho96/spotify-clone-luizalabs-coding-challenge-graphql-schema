@@ -1,0 +1,23 @@
+query ArtistAlbums($artistId: ID!, $limit: Int, $offset: Int) {
+  artistAlbums(artistId: $artistId, limit: $limit, offset: $offset) {
+    edges {
+      cursor
+      node {
+        id
+        name
+        releaseDate
+        totalTracks
+        images {
+          url
+          height
+          width
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
+    totalCount
+  }
+}

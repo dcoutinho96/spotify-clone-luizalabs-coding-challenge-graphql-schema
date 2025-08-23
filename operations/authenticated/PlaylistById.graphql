@@ -1,6 +1,5 @@
-# Create a new playlist
-mutation CreatePlaylist($name: String!, $description: String, $public: Boolean) {
-  createPlaylist(name: $name, description: $description, public: $public) {
+query PlaylistById($id: ID!) {
+  playlistById(id: $id) {
     id
     name
     description
@@ -13,11 +12,6 @@ mutation CreatePlaylist($name: String!, $description: String, $public: Boolean) 
     owner {
       id
       displayName
-      images {
-        url
-        height
-        width
-      }
     }
     tracks(limit: 10, offset: 0) {
       edges {
